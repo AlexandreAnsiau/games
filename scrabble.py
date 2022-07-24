@@ -53,7 +53,7 @@ class ScrabbleSet:
         return valide
 
     def get_words_possibilities(self):
-        with open("/Users/Alex/Desktop/mots_francais.txt", "r", encoding="windows-1252") as file:
+        with open("mots_francais.txt", "r", encoding="windows-1252") as file:
             dict_words = {}
             for word in file:
                 word = word.lower().replace("\n", "")
