@@ -1,3 +1,8 @@
+from copy import copy
+import random
+from string import ascii_lowercase
+
+
 class ScrabbleSet:
     def __init__(self, list_letters=None):
         self.list_letters = self.get_list_letters(list_letters)
