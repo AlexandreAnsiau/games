@@ -1,5 +1,6 @@
 from copy import copy
-import random
+from json import load
+from random import choice
 from string import ascii_lowercase
 
 
@@ -12,39 +13,19 @@ class ScrabbleSet:
 
     @staticmethod
     def get_dico_value_letters():
-        dico = {
-            "d": 2,
-            "g": 2,
-            "m": 2,
-            "b": 3,
-            "c": 3,
-            "p": 3,
-            "f": 4,
-            "h": 4,
-            "v": 4,
-            "j": 8,
-            "q": 8,
-            "k": 10,
-            "w": 10,
-            "x": 10,
-            "y": 10,
-            "z": 10
-        }
-
-        for ascii_letter in ascii_lowercase:
-            if ascii_letter not in dico:
-                dico[ascii_letter] = 1
+        with open("dico_value_letters.json") as file:
+            dico = load(file)
         return dico
 
     @staticmethod
     def get_list_letters(list_letters=None):
         if not list_letters:
-            return [random.choice(ascii_lowercase) for _ in range(10)]
+            return [choice(ascii_lowercase) for _ in range(10)]
         return list_letters
 
     @staticmethod
     def get_dico_words(dico_words, encoding="utf8"):
-        name_file = "/Users/Alex/Desktop/games/scrabble/mots_francais.txt" if not dico_words else dico_words
+        name_file = "mots_francais.txt" if not dico_words else dico_words
         encoding_file = "windows-1252" if not dico_words else encoding
         return {"name": name_file, "encoding": encoding_file}
 
@@ -71,7 +52,8 @@ class ScrabbleSet:
         return valide
 
     def get_words_possibilities(self):
-        with open(self._dico_words["name"], "r", encoding=self._dico_words["encoding"]) as file:
+        with open(self._dico_words["name"], "r",
+                  encoding=self._dico_words["encoding"]) as file:
             dict_words = {}
             for word in file:
                 word = word.lower().replace("\n", "")
