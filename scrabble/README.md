@@ -9,5 +9,5 @@ list of possible words. You can enter arguments in this class and then execute t
 must stop at the scrabble directory in your terminal. And then you can run the command:  
 
 ```
-python exec
+python exec.py
 ```
