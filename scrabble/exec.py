@@ -1,7 +1,7 @@
 from scrabble import ScrabbleSet
 
-list_letters = ["v", "o", "i", "t", "u", "r", "e"]
+list_letters = ["a", "b", "o", "u", "t"]
 
-scrabble_set = ScrabbleSet(list_letters, {"v": 0})
+scrabble_set = ScrabbleSet(list_letters, {"a": 2}, "english_words.txt")
 
 print(scrabble_set.get_words_possibilities())
