@@ -5,7 +5,8 @@ from string import ascii_lowercase
 
 
 class ScrabbleSet:
-    def __init__(self, list_letters=None, letters_indexes={}, dico_words="french_words.txt"):
+    def __init__(self, list_letters=None, letters_indexes={},
+                 dico_words="dico_words/french_words.txt"):
         """
         Parameters
         ----------
