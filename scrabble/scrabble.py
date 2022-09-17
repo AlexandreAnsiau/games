@@ -140,7 +140,7 @@ class ScrabbleSet:
         Return
         ------
         list
-            The list containing tuple with word and the point win with this
+            The list containing tuple with word and the points win with this
             one. This list is sorted decreasingly according the points.
         """
         with open(self._dico_words["name"], "r",
@@ -150,10 +150,8 @@ class ScrabbleSet:
                 word = word.lower().replace("\n", "")
                 if self.validate_letters_indexes(word, self.letters_indexes):
                     if self.validate_word(self.list_letters, word):
-                        letters = [letter for letter in word]
                         dict_words[word] = sum(
-                            [self._dico_value_letters[letter]
-                             for letter in letters
-                             if self._dico_value_letters.get(letter)])
+                            [self._dico_value_letters.get(letter, 0)
+                             for letter in word])
             list_words = list(dict_words.items())
         return sorted(list_words, key=lambda x: x[1], reverse=True)
